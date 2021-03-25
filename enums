@@ -6,6 +6,7 @@ public class genreEnum {
   SCIENCE_FICTION,
   FANTASY,
   HORROR
+
 }
 
 public class genderEnum {
