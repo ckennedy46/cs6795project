@@ -1,0 +1,23 @@
+import java.util.*;
+
+public class genreEnum {
+  ROMANCE,
+  MYSTERY,
+  SCIENCE_FICTION,
+  FANTASY,
+  HORROR
+}
+
+public class genderEnum {
+  MAN,
+  WOMAN,
+  TRANSGENDER,
+  NONBINARY,
+  OTHER
+}
+
+public class seEnum {
+  POOR,
+  MIDDLE_CLASS,
+  RICH
+}
