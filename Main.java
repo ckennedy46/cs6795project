@@ -50,14 +50,15 @@ class Main {
 		Scanner myObj = new Scanner(System.in);
 		int genre = -1;
 		String action;
-		int numCharacters;
+		int numCharacters = -1;
 		List<String> charactersList = new ArrayList<String>();
 		String location;
-		int genderNum;
-		int socioecNum;
+		int genderNum = -1;
+		int socioecNum = -1;
 		String birthCountry;
 		String currentCountry;
-		int childhoodNum;
+		int childhoodNum = -1;
+		Random rand = new Random();
 
 		//genre user input
 		while (genre == -1) {
@@ -85,8 +86,22 @@ class Main {
 		action = myObj.nextLine();
 
 		//character user input
-		System.out.println("How many characters were involved in your experience?");
-		numCharacters = Integer.parseInt(myObj.nextLine());
+		while (numCharacters == -1) {
+			System.out.println("How many characters were involved in your experience?");
+			String numCharString = myObj.nextLine();
+			if (numCharString.equals("")) {
+				numCharacters = 1;
+			}
+			else {
+				try {
+					numCharacters = Integer.parseInt(numCharString);
+				}
+				catch (Exception e){
+					numCharacters = -1;
+					System.out.println("Please type a NUMBER");
+				}
+			}
+		}
 		for (int i = 0; i < numCharacters; i++) {
 			System.out.println("Describe character " + (i + 1) + " in your experience:");
 			charactersList.add(myObj.nextLine());
@@ -98,12 +113,41 @@ class Main {
 
 		//gender user input
 		System.out.println();
-		System.out.println("Now we will ask you about your background.\nWhat is your gender? (please select a number)\n1. Male\n2. Female\n3. Transgender\n4. Nonbinary\n5. Other");
-		genderNum = Integer.parseInt(myObj.nextLine());
+		while (genderNum == -1) {
+			System.out.println("Now we will ask you about your background.\nWhat is your gender? (please select a number)\n1. Male\n2. Female\n3. Transgender\n4. Nonbinary\n5. Other");
+			String genderString = myObj.nextLine();
+			if (genderString.equals("") || genderString.equals("5")) {
+				genderNum = rand.nextInt(4) + 1;
+			}
+			else {
+				try {
+					genderNum = Integer.parseInt(genderString);
+				}
+				catch (Exception e) {
+					genderNum = -1;
+					System.out.println("Please type a NUMBER");
+				}
+			}
+		}
 
 		//socioeconomic level user input
-		System.out.println("What would you define your socioeconomic level as growing up? (please select a number)\n1. Poor\n2. Middle Class\n3. Rich");
-		socioecNum = Integer.parseInt(myObj.nextLine());
+		while (socioecNum == -1) {
+			System.out.println("What would you define your socioeconomic level as growing up? (please select a number)\n1. Poor\n2. Middle Class\n3. Rich");
+			String socioec = myObj.nextLine();
+			if (socioec.equals("")) {
+				socioecNum = rand.nextInt(3) + 1;
+			}
+			else {
+				try {
+					socioecNum = Integer.parseInt(socioec);
+				}
+				catch (Exception e) {
+					socioecNum = -1;
+					System.out.println("Please type a NUMBER");
+				}
+			}
+			
+		}
 
 		//birth country user input
 		System.out.println("Birth Country: ");
@@ -114,8 +158,22 @@ class Main {
 		currentCountry = myObj.nextLine();
 
 		//childen affect user input
-		System.out.println("Do you define your childhood as generally positive or negative? (please enter the number)\n1. Positive\n2. Negative");
-		childhoodNum = Integer.parseInt(myObj.nextLine());
+		while (childhoodNum == -1) {
+			System.out.println("Do you define your childhood as generally positive or negative? (please enter the number)\n1. Positive\n2. Negative");
+			String childhood = myObj.nextLine();
+			if (childhood.equals("")) {
+				childhoodNum = rand.nextInt(2) + 1;
+			}
+			else {
+				try {
+					childhoodNum = Integer.parseInt(childhood);
+				}
+				catch (Exception e) {
+					childhoodNum = -1;
+					System.out.println("Please type a NUMBER");
+				}
+			}
+		}
 
 		//probably some logic here for getting the object
 
