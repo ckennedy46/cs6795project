@@ -48,7 +48,7 @@ class Main {
 
 	public static void main(String[] args) {
 		Scanner myObj = new Scanner(System.in);
-		int genre;
+		int genre = -1;
 		String action;
 		int numCharacters;
 		List<String> charactersList = new ArrayList<String>();
@@ -60,8 +60,24 @@ class Main {
 		int childhoodNum;
 
 		//genre user input
-		System.out.println("Please type a number for your genre: \n1. Romance\n2. Mystery\n3. Science Fiction\n4. Fantasy\n5. Horror");
-		genre = Integer.parseInt(myObj.nextLine());
+		while (genre == -1) {
+			System.out.println("Please type a number for your genre: \n1. Romance\n2. Mystery\n3. Science Fiction\n4. Fantasy\n5. Horror");
+			String genreString = myObj.nextLine();
+			if (genreString.equals("")) {
+				genre = -1;
+			}
+			else {
+				try {
+					genre = Integer.parseInt(genreString);
+				}
+				catch (Exception e) {
+					genre = -1;
+					System.out.println("Please type a NUMBER");
+				}
+				
+			}
+		}
+
 
 		//action user input
 		System.out.println();
