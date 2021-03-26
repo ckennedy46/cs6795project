@@ -176,7 +176,18 @@ class Main {
 		}
 
 		//probably some logic here for getting the object
-
-		//output here whenever we do that
+		
+		
+		//output characters
+		System.out.println("Who - protagonists");
+		System.out.println("Who - villain");
+		//output events
+		System.out.println("What");
+		//output time
+		System.out.println("When");
+		//ourput location
+		System.out.println("Where");
+		//outpur plot type
+		System.out.println("Why");
 	}
 }
