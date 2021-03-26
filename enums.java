@@ -18,11 +18,16 @@ public enum Genre {
 }
 
 public enum Gender {
-  MAN,
-  WOMAN,
-  TRANSGENDER,
-  NONBINARY,
-  OTHER
+  MAN ("Man"),
+  WOMAN ("Woman"),
+  TRANSGENDER ("Transgender"),
+  NONBINARY ("Non-Binary"),
+  OTHER ("Other");
+
+  private String name3;
+  Gender(String name3) { this.name3 = name3;}
+
+  public String getName() { return this.name3; }
 }
 
 public enum Socioeconomic {
