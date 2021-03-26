@@ -18,7 +18,7 @@ public class Prompt {
     private List<String> allVillainActions;// = new ArrayList<String>();
     private List<String> allPlots;// = new ArrayList<String>();
     private List<String> allLocations;
-    private HashMap<String, List<String>> traitsByAffects = new HashMap<>();
+    private HashMap<Integer, List<String>> traitsByAffects = new HashMap<>();
     
 
     public Prompt(String genre) {
@@ -46,8 +46,8 @@ public class Prompt {
         allPlots = new ArrayList<String>(Arrays.asList("to go on a quest", "to go on an adventure", "to pursue or evade the villain", "to complete a rescue", "to escape", "to gain revenge", "to solve a riddle", "to rival the villain", "to overcome a disadvantage", "to resist temptation", "coming of age", "to transform your identity", "middle life crisis", "to fall in love", "to pursue forbidden love", "to sacrifice", "to discover a secret/treasure", "to become the villain", "to ascend to a higherr status", "to descend to a lower status"));
         allLocations = new ArrayList<String>(Arrays.asList("midwest", "beach", "Appalachian Mountains", "Paris", "New Zealand", "United States of Pangea", "Tokyo", "the Ghetto", "East Asia", "Los Angelos"));
 
-        traitsByAffects.put("positive", new ArrayList<String>(Arrays.asList("confident", "competent", "disciplined", "respectful", "artistic", "shy", "eccentric", "expressive", "naive", "thrill-seeking")));
-        traitsByAffects.put("negative", new ArrayList<String>(Arrays.asList("ruthless", "abusive", "inflexible", "secretly kinky", "oblivious", "fearful", "isolated", "superficial", "histrionic", "explosive anger")));
+        traitsByAffects.put(1, new ArrayList<String>(Arrays.asList("confident", "competent", "disciplined", "respectful", "artistic", "shy", "eccentric", "expressive", "naive", "thrill-seeking")));
+        traitsByAffects.put(2, new ArrayList<String>(Arrays.asList("ruthless", "abusive", "inflexible", "secretly kinky", "oblivious", "fearful", "isolated", "superficial", "histrionic", "explosive anger")));
 
     }
 
@@ -84,12 +84,12 @@ public class Prompt {
         }
     }
 
-    public void setCharacters(int numCharacters, List<String> input, String gender, String economic, String affect) {
+    public void setCharacters(int numCharacters, List<String> input, String gender, String economic, int affect) {
         if (numCharacters == 0) {
             int num = rand.nextInt(10);
             String trait = traitsByAffects.get(affect).get(num);
 
-            String character = economic + trait + gender;
+            String character = economic + " " + trait +  " " + gender;
             characters.add(character);
         } else {
             characters = new ArrayList<String>(input);
@@ -105,8 +105,8 @@ public class Prompt {
         } else if (num == 2 && !expLocation.isEmpty()) {
             location = expLocation;
         } else {
-            int num = rand.nextInt(10);
-            location = allLocations.get(num);
+            int newNum = rand.nextInt(10);
+            location = allLocations.get(newNum);
         }
     }
 

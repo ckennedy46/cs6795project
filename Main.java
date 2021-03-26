@@ -2,11 +2,11 @@ import java.util.*;
 
 class Main {
 	public enum Genre {
-  		ROMANCE ("Romance"),
-  		MYSTERY ("Mystery"),
-  		SCIENCE_FICTION ("Science Fiction"),
-  		FANTASY ("Fantasy"),
-  		HORROR ("Horror");
+  		ROMANCE ("romance"),
+  		MYSTERY ("mystery"),
+  		SCIENCE_FICTION ("science fiction"),
+  		FANTASY ("fantasy"),
+  		HORROR ("horror");
 
   		private String name;
   			Genre(String name) {
@@ -90,7 +90,7 @@ class Main {
 			System.out.println("How many characters were involved in your experience?");
 			String numCharString = myObj.nextLine();
 			if (numCharString.equals("")) {
-				numCharacters = 1;
+				numCharacters = 0;
 			}
 			else {
 				try {
@@ -176,18 +176,62 @@ class Main {
 		}
 
 		//probably some logic here for getting the object
+		Genre gen[] = Genre.values();
+		String genreString = gen[genre - 1].getName();
+		Prompt prompt = new Prompt(genreString);
 		
-		
+		//output genre
+		System.out.println();
+		System.out.println("Genre: " + genreString);
+		System.out.println();
 		//output characters
 		System.out.println("Who - protagonists");
+		Gender gend[] = Gender.values();
+		String genderString = gend[genderNum - 1].getName();
+
+		Socioeconomic socio[] = Socioeconomic.values();
+		String economic = socio[socioecNum - 1].getName();
+
+		prompt.setCharacters(numCharacters, charactersList, genderString, economic, childhoodNum);
+		List<String> chars = prompt.getCharacters();
+		for(int i = 0; i < chars.size(); i ++) {
+			int n = i + 1;
+			System.out.println("Charcter " + n + ": " + chars.get(i));
+		}
+		System.out.println();
 		System.out.println("Who - villain");
+		prompt.setVillain();
+		prompt.setVillainAction();
+		String villain = prompt.getVillain();
+		String villainAction = prompt.getVillainAction();
+		System.out.println(villain + " who " + villainAction);
+		System.out.println();
+
 		//output events
 		System.out.println("What");
+		prompt.setEvent(action);
+		String event = prompt.getEvent();
+		System.out.println(event);
+		System.out.println();
+
 		//output time
 		System.out.println("When");
+		prompt.setTimeSetting();
+		String time = prompt.getTimeSetting();
+		System.out.println(time);
+		System.out.println();
+
 		//ourput location
 		System.out.println("Where");
+		prompt.setLocation(currentCountry, birthCountry, location);
+		String locationOutput = prompt.getLocation();
+		System.out.println(locationOutput);
+		System.out.println();
+
 		//outpur plot type
 		System.out.println("Why");
+		prompt.setPlot();
+		String plot = prompt.getPlot();
+		System.out.println(plot);
 	}
 }
