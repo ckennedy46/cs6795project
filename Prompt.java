@@ -71,7 +71,7 @@ public class Prompt {
     }
 
     public void setVillainAction() {
-        int num = rand.nextInt(20);
+        int num = rand.nextInt(10);
         villainAction = allVillainActions.get(num);
     }
 
