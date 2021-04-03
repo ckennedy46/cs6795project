@@ -39,7 +39,7 @@ public class Prompt {
         whoVillains.put("romance", new ArrayList<String>(Arrays.asList("the jealous ex-girlfriend", "the disapproving mother", "the evil king", "the bully", "the competing love interest", "the powerful witch", "the corrupt CEO", "the abusive ex-husband", "the kidnapper", "the greedy politician")));
         whoVillains.put("fantasy", new ArrayList<String>(Arrays.asList("evil queen", "sorcerer", "troll", "pirates", "gang of outlaws", "dragons", "ancient evil force", "the dark lord", "the traitor", "the beast")));
         whoVillains.put("mystery", new ArrayList<String>(Arrays.asList("moriarty", "serial killer", "psychotic techno-wizard", "artificial super intelligence", "immoral lawyer", "corrupt cop", "scorned lover", "charismatic, but racist bigot", "deep state actor", "mob/gang boss")));
-        whoVillains.put("science fiction", new ArrayList<String>(Arrays.asList("dictator", "alien king", "deadly robot", "evil cyborg", "mad scientist", "supervillain", "controlling regime", "evil doctor", "invasive bacteria")));
+        whoVillains.put("science fiction", new ArrayList<String>(Arrays.asList("dictator", "evil twin", "alien king", "deadly robot", "evil cyborg", "mad scientist", "supervillain", "controlling regime", "evil doctor", "invasive bacteria")));
         whoVillains.put("horror", new ArrayList<String>(Arrays.asList("Jack the Ripper", "a humongous shark", "murderous pupper", "the Fates", "split personality", "evil clown", "cannibal", "possessed child", "psychotic vampire", "evil surgeon")));
         
         allVillainActions = new ArrayList<String>(Arrays.asList("killed your family", "restricted your freedoms", "seduced your ex", "stole your identity", "kidnapped your sibling", "framed you for robbery", "broke the law", "hurt your friends", "took advantage of minorities", "embezzled money"));
@@ -77,7 +77,7 @@ public class Prompt {
 
     public void setEvent(String input) {
         if (input.isEmpty() || input == null) {
-            int num = rand.nextInt(20);
+            int num = rand.nextInt(10);
             event = whatEvents.get(genre).get(num);
         } else {
             event = input;
