@@ -180,10 +180,15 @@ class Main {
 		String genreString = gen[genre - 1].getName();
 		Prompt prompt = new Prompt(genreString);
 		
+		System.out.println("\n\n\n");
+		System.out.println("*** Story Prompt ***");
+
+
 		//output genre
 		System.out.println();
 		System.out.println("Genre: " + genreString);
 		System.out.println();
+
 		//output characters
 		System.out.println("Who - protagonists");
 		Gender gend[] = Gender.values();
@@ -228,10 +233,28 @@ class Main {
 		System.out.println(locationOutput);
 		System.out.println();
 
-		//outpur plot type
+		//output plot type
 		System.out.println("Why");
 		prompt.setPlot();
 		String plot = prompt.getPlot();
 		System.out.println(plot);
+
+
+		System.out.println();
+		if (chars.size() == 1) {
+			System.out.print("The protagonist, a " + chars.get(0));
+		}
+		else if (chars.size() == 2) {
+			System.out.print("The " + chars.size() + " protagonists, a " + chars.get(0) + " and a " + chars.get(1));
+		}
+		else {
+			System.out.print("The " + chars.size() + " protagonists, a ");
+			for (int i = 0; i < chars.size() - 2; i++) {
+				System.out.print(chars.get(i) + ", a");
+			}
+			System.out.print(chars.get(chars.size() - 2) + ", and a" + chars.get(chars.size() - 1));
+		}
+		System.out.print(", fought against the villain, a " + villain + " who " + villainAction + ", in " + locationOutput + " during " + time + " because of " + plot);
+		System.out.println();
 	}
 }
