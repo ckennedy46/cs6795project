@@ -241,81 +241,73 @@ class Main {
 
 
 		System.out.println();
+		String output = "";
 		if (chars.size() == 1) {
-			String character = chars.get(0);
-			if (character.length() >= 2 && character.substring(0, 2).equals("a ") || character.length() >= 3 && character.substring(0, 3).equals("an ")) {
-				System.out.print("The protagonist, " + character);
-			}
-			else {
-				if (character.substring(0, 1).equals("a") || character.substring(0, 1).equals("e") || character.substring(0, 1).equals("i") || character.substring(0, 1).equals("o") || character.substring(0, 1).equals("u")) {
-					System.out.print("The protagonist, an " + character);
-				}
-				else {
-					System.out.print("The protagonist, a " + character);
-				}
-			}
-		}
-		else if (chars.size() == 2) {
-			String characterOne = chars.get(0);
-			String characterTwo = chars.get(1);
-			String output = "The " + chars.size() + "protagonists, ";
-			if (characterOne.length() >= 2 && characterOne.substring(0, 2).equals("a ") || characterOne.length() >= 3 && characterOne.substring(0, 3).equals("an ")) {
-				output += characterOne;
-			}
-			else {
-				if (characterOne.substring(0, 1).equals("a") || characterOne.substring(0, 1).equals("e") || characterOne.substring(0, 1).equals("i") || characterOne.substring(0, 1).equals("o") || characterOne.substring(0, 1).equals("u")) {
-					output += "an " + characterOne;
-				}
-				else {
-					output += "a " + characterOne;
-				}
-			}
-			output += " and ";
-			if (characterTwo.length() >= 2 && characterTwo.substring(0, 2).equals("a ") || characterTwo.length() >= 3 && characterTwo.substring(0, 3).equals("an ")) {
-				output += characterTwo;
-			}
-			else {
-				if (characterTwo.substring(0, 1).equals("a") || characterTwo.substring(0, 1).equals("e") || characterTwo.substring(0, 1).equals("i") || characterTwo.substring(0, 1).equals("o") || characterTwo.substring(0, 1).equals("u")) {
-					output += "an " + characterTwo;
-				}
-				else {
-					output += "a " + characterTwo;
-				}
-			}
-			System.out.print(output);
+			output += "The protagonist, ";
 		}
 		else {
-			System.out.print("The " + chars.size() + " protagonists, ");
-			for (int i = 0; i < chars.size() - 1; i++) {
+			output += "The " + chars.size() + " protagonists, ";
+		}
+
+		String first = chars.get(0);
+		if (first.length() >= 2 && first.substring(0, 2).equals("a ") || first.length() >= 3 && first.substring(0, 3).equals("an ")) {
+			output += first;
+		}
+		else {
+			if (first.substring(0, 1).equals("a") || first.substring(0, 1).equals("e") || first.substring(0, 1).equals("i") || first.substring(0, 1).equals("o") || first.substring(0, 1).equals("u")) {
+				output += "an " + first;
+			}
+			else {
+				output += "a " + first;
+			}
+		}
+
+		if (chars.size() == 2) {
+			output += " and ";
+			String second = chars.get(1);
+			if (second.length() >= 2 && second.substring(0, 2).equals("a ") || second.length() >= 3 && second.substring(0, 3).equals("an ")) {
+				output += second;
+			}
+			else {
+				if (second.substring(0, 1).equals("a") || second.substring(0, 1).equals("e") || second.substring(0, 1).equals("i") || second.substring(0, 1).equals("o") || second.substring(0, 1).equals("u")) {
+					output += "an " + second;
+				}
+				else {
+					output += "a " + second;
+				}
+			}
+		}
+		else if (chars.size() > 2) {
+			for (int i = 1; i < chars.size() - 1; i++) {
 				String curr = chars.get(i);
-				String output = "";
 				if (curr.length() >= 2 && curr.substring(0, 2).equals("a ") || curr.length() >= 3 && curr.substring(0, 3).equals("an ")) {
-					output += curr + ", ";
+					output += ", " + curr;
 				}
 				else {
 					if (curr.substring(0, 1).equals("a") || curr.substring(0, 1).equals("e") || curr.substring(0, 1).equals("i") || curr.substring(0, 1).equals("o") || curr.substring(0, 1).equals("u")) {
-						output += "an " + curr + ", ";
+						output += ", an " + curr;
 					}
 					else {
-						output += "a " + curr + ", ";
+						output += ", a " + curr;
 					}
 				}
-				System.out.print(output);
 			}
 			String lastOne = chars.get(chars.size() - 1);
 			if (lastOne.length() >= 2 && lastOne.substring(0, 2).equals("a ") || lastOne.length() >= 3 && lastOne.substring(0, 3).equals("an ")) {
-				System.out.print(" and " + lastOne);
+				output += ", and " + lastOne;
 			}
 			else {
 				if (lastOne.substring(0, 1).equals("a") || lastOne.substring(0, 1).equals("e") || lastOne.substring(0, 1).equals("i") || lastOne.substring(0, 1).equals("o") || lastOne.substring(0, 1).equals("u")) {
-					System.out.print(" and an " + lastOne);
+					output += ", and an " + lastOne;
 				}
 				else {
-					System.out.print(" and a " + lastOne);
+					output += ", and a " + lastOne;
 				}
 			}
 		}
-		System.out.print(", fought against the villain, " + villain + " who " + villainAction + ", in " + locationOutput + " during " + time + plot);
+		System.out.print(output);
+
+		System.out.print(", fought against the villain, " + villain + " who " + villainAction + ", in " + locationOutput + " during " + time + " " + plot);
 		System.out.println();
 	}
 }
