@@ -307,7 +307,7 @@ class Main {
 		}
 		System.out.print(output);
 
-		System.out.print(", fought against the villain, " + villain + " who " + villainAction + ", in " + locationOutput + " during " + time + " " + plot + " because " + event);
+		System.out.print(", fought against the villain, " + villain + " who " + villainAction + ", in " + locationOutput + " during " + time + " in order to " + event + " " + plot);
 		System.out.println();
 	}
 }
