@@ -187,14 +187,10 @@ class Main {
 		System.out.println("\n\n\n");
 		System.out.println("*** Story Prompt ***");
 
-
-		//output genre
 		System.out.println();
 		System.out.println("Genre: " + genreString);
 		System.out.println();
 
-		//output characters
-		System.out.println("Who - protagonists");
 		Gender gend[] = Gender.values();
 		String genderString = gend[genderNum - 1].getName();
 
@@ -203,48 +199,19 @@ class Main {
 
 		prompt.setCharacters(numCharacters, charactersList, genderString, economic, childhoodNum);
 		List<String> chars = prompt.getCharacters();
-		for(int i = 0; i < chars.size(); i ++) {
-			int n = i + 1;
-			System.out.println("Charcter " + n + ": " + chars.get(i));
-		}
-		System.out.println();
-		System.out.println("Who - villain");
 		prompt.setVillain();
 		prompt.setVillainAction();
 		String villain = prompt.getVillain();
 		String villainAction = prompt.getVillainAction();
-		System.out.println(villain + " who " + villainAction);
-		System.out.println();
-
-		//output events
-		System.out.println("What");
 		prompt.setEvent(action);
 		String event = prompt.getEvent();
-		System.out.println(event);
-		System.out.println();
-
-		//output time
-		System.out.println("When");
 		prompt.setTimeSetting();
 		String time = prompt.getTimeSetting();
-		System.out.println(time);
-		System.out.println();
-
-		//ourput location
-		System.out.println("Where");
 		prompt.setLocation(currentCountry, birthCountry, location);
 		String locationOutput = prompt.getLocation();
-		System.out.println(locationOutput);
-		System.out.println();
-
-		//output plot type
-		System.out.println("Why");
 		prompt.setPlot();
 		String plot = prompt.getPlot();
-		System.out.println(plot);
 
-
-		System.out.println();
 		String output = "";
 		if (chars.size() == 1) {
 			output += "The protagonist, ";
