@@ -82,8 +82,9 @@ class Main {
 
 		//action user input
 		System.out.println();
-		System.out.println("Now please describe your experience on which to base the story.\nFirst input the action/event in no more than a couple sentences:");
-		action = myObj.nextLine();
+		//System.out.println("Now please describe your experience on which to base the story.\nFirst input the action/event in no more than a couple sentences:");
+		//action = myObj.nextLine();
+		System.out.println("Now please follow the prompts to describe an experience you had which you will base your story off of.");
 
 		//character user input
 		while (numCharacters == -1) {
@@ -108,8 +109,11 @@ class Main {
 		}
 
 		//location user input
-		System.out.println("What was the location of your event/action:");
+		System.out.println("What was the location of your event:");
 		location = myObj.nextLine();
+
+		System.out.println("Please describe the event as if you were describing it in the format \"This stood out to me because ...\"");
+		action = myObj.nextLine();
 
 		//gender user input
 		System.out.println();
@@ -180,12 +184,13 @@ class Main {
 		String genreString = gen[genre - 1].getName();
 		Prompt prompt = new Prompt(genreString);
 		
-		//output genre
+		System.out.println("\n\n\n");
+		System.out.println("*** Story Prompt ***");
+
 		System.out.println();
 		System.out.println("Genre: " + genreString);
 		System.out.println();
-		//output characters
-		System.out.println("Who - protagonists");
+
 		Gender gend[] = Gender.values();
 		String genderString = gend[genderNum - 1].getName();
 
@@ -194,44 +199,86 @@ class Main {
 
 		prompt.setCharacters(numCharacters, charactersList, genderString, economic, childhoodNum);
 		List<String> chars = prompt.getCharacters();
-		for(int i = 0; i < chars.size(); i ++) {
-			int n = i + 1;
-			System.out.println("Charcter " + n + ": " + chars.get(i));
-		}
-		System.out.println();
-		System.out.println("Who - villain");
 		prompt.setVillain();
 		prompt.setVillainAction();
 		String villain = prompt.getVillain();
 		String villainAction = prompt.getVillainAction();
-		System.out.println(villain + " who " + villainAction);
-		System.out.println();
-
-		//output events
-		System.out.println("What");
 		prompt.setEvent(action);
 		String event = prompt.getEvent();
-		System.out.println(event);
-		System.out.println();
-
-		//output time
-		System.out.println("When");
 		prompt.setTimeSetting();
 		String time = prompt.getTimeSetting();
-		System.out.println(time);
-		System.out.println();
-
-		//ourput location
-		System.out.println("Where");
 		prompt.setLocation(currentCountry, birthCountry, location);
 		String locationOutput = prompt.getLocation();
-		System.out.println(locationOutput);
-		System.out.println();
-
-		//outpur plot type
-		System.out.println("Why");
 		prompt.setPlot();
 		String plot = prompt.getPlot();
-		System.out.println(plot);
+
+		String output = "";
+		if (chars.size() == 1) {
+			output += "The protagonist, ";
+		}
+		else {
+			output += "The " + chars.size() + " protagonists, ";
+		}
+
+		String first = chars.get(0);
+		if (first.length() >= 2 && first.substring(0, 2).equals("a ") || first.length() >= 3 && first.substring(0, 3).equals("an ")) {
+			output += first;
+		}
+		else {
+			if (first.substring(0, 1).equals("a") || first.substring(0, 1).equals("e") || first.substring(0, 1).equals("i") || first.substring(0, 1).equals("o") || first.substring(0, 1).equals("u")) {
+				output += "an " + first;
+			}
+			else {
+				output += "a " + first;
+			}
+		}
+
+		if (chars.size() == 2) {
+			output += " and ";
+			String second = chars.get(1);
+			if (second.length() >= 2 && second.substring(0, 2).equals("a ") || second.length() >= 3 && second.substring(0, 3).equals("an ")) {
+				output += second;
+			}
+			else {
+				if (second.substring(0, 1).equals("a") || second.substring(0, 1).equals("e") || second.substring(0, 1).equals("i") || second.substring(0, 1).equals("o") || second.substring(0, 1).equals("u")) {
+					output += "an " + second;
+				}
+				else {
+					output += "a " + second;
+				}
+			}
+		}
+		else if (chars.size() > 2) {
+			for (int i = 1; i < chars.size() - 1; i++) {
+				String curr = chars.get(i);
+				if (curr.length() >= 2 && curr.substring(0, 2).equals("a ") || curr.length() >= 3 && curr.substring(0, 3).equals("an ")) {
+					output += ", " + curr;
+				}
+				else {
+					if (curr.substring(0, 1).equals("a") || curr.substring(0, 1).equals("e") || curr.substring(0, 1).equals("i") || curr.substring(0, 1).equals("o") || curr.substring(0, 1).equals("u")) {
+						output += ", an " + curr;
+					}
+					else {
+						output += ", a " + curr;
+					}
+				}
+			}
+			String lastOne = chars.get(chars.size() - 1);
+			if (lastOne.length() >= 2 && lastOne.substring(0, 2).equals("a ") || lastOne.length() >= 3 && lastOne.substring(0, 3).equals("an ")) {
+				output += ", and " + lastOne;
+			}
+			else {
+				if (lastOne.substring(0, 1).equals("a") || lastOne.substring(0, 1).equals("e") || lastOne.substring(0, 1).equals("i") || lastOne.substring(0, 1).equals("o") || lastOne.substring(0, 1).equals("u")) {
+					output += ", and an " + lastOne;
+				}
+				else {
+					output += ", and a " + lastOne;
+				}
+			}
+		}
+		System.out.print(output);
+
+		System.out.print(", fought against the villain, " + villain + " who " + villainAction + ", in " + locationOutput + " during " + time + " " + plot + " because " + event);
+		System.out.println();
 	}
 }
