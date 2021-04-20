@@ -82,8 +82,9 @@ class Main {
 
 		//action user input
 		System.out.println();
-		System.out.println("Now please describe your experience on which to base the story.\nFirst input the action/event in no more than a couple sentences:");
-		action = myObj.nextLine();
+		//System.out.println("Now please describe your experience on which to base the story.\nFirst input the action/event in no more than a couple sentences:");
+		//action = myObj.nextLine();
+		System.out.println("Now please follow the prompts to describe an experience you had which you will base your story off of.");
 
 		//character user input
 		while (numCharacters == -1) {
@@ -108,8 +109,11 @@ class Main {
 		}
 
 		//location user input
-		System.out.println("What was the location of your event/action:");
+		System.out.println("What was the location of your event:");
 		location = myObj.nextLine();
+
+		System.out.println("Please describe the event as if you were describing it in the format \"This stood out to me because ...\"");
+		action = myObj.nextLine();
 
 		//gender user input
 		System.out.println();
@@ -307,7 +311,7 @@ class Main {
 		}
 		System.out.print(output);
 
-		System.out.print(", fought against the villain, " + villain + " who " + villainAction + ", in " + locationOutput + " during " + time + " in order to " + event + " " + plot);
+		System.out.print(", fought against the villain, " + villain + " who " + villainAction + ", in " + locationOutput + " during " + time + " " + plot + " because " + event);
 		System.out.println();
 	}
 }
